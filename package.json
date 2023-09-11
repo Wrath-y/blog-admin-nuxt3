@@ -1,0 +1,30 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@element-plus/nuxt": "^1.0.5",
+    "@kangc/v-md-editor": "^2.3.16",
+    "@nuxt/devtools": "latest",
+    "@types/node": "^18.17.3",
+    "ali-oss": "^6.1.1",
+    "lodash": "^4.17.21",
+    "md5": "^2.3.0",
+    "nuxt": "^3.6.5",
+    "sass": "^1.64.2",
+    "vue-gtag-next": "^1.14.0",
+    "vue-waterfall-plugin-next": "^2.2.2"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "axios": "^1.5.0",
+    "element-plus": "^2.3.12",
+    "md-editor-v3": "^4.6.1"
+  }
+}
