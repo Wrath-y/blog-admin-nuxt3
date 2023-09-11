@@ -49,7 +49,7 @@ async function putOSS(src, dist) {
  */
 async function upFile(dirName = '') {
   try {
-    await addFileToOSSSync(PUBLIC_PATH + dirName + "/.output/public/_nuxt", 'static_web/_nuxt');
+    await addFileToOSSSync(PUBLIC_PATH + dirName + "/.output/public/_nuxt", 'static_admin/_nuxt');
   } catch (err) {
     console.log(dirName + "上传oss成功失败", err);
   }
