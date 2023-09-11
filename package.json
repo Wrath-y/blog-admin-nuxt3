@@ -14,12 +14,8 @@
     "@nuxt/devtools": "latest",
     "@types/node": "^18.17.3",
     "ali-oss": "^6.1.1",
-    "lodash": "^4.17.21",
-    "md5": "^2.3.0",
     "nuxt": "^3.6.5",
-    "sass": "^1.64.2",
-    "vue-gtag-next": "^1.14.0",
-    "vue-waterfall-plugin-next": "^2.2.2"
+    "sass": "^1.64.2"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
