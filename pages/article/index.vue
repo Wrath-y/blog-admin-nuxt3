@@ -16,7 +16,7 @@
         <el-table :data="list" v-loading="loading" size="default">
             <el-table-column prop="id" label="ID" width="50" />
             <el-table-column prop="title" label="标题" />
-            <el-table-column prop="tags" label="分类" width="70" />
+            <el-table-column prop="tags" label="分类" width="150" />
             <el-table-column label="是否显示" width="80">
                 <template #default="scope">
                     <p v-if="scope.row.status == 0">否</p>
@@ -29,17 +29,17 @@
                     <p v-if="scope.row.source == 1">外部</p>
                 </template>
             </el-table-column>
-            <el-table-column prop="update_time" label="更新时间" width="220">
+            <el-table-column prop="create_time" label="创建时间" width="170">
                 <template #default="scope">
-                    {{ getNowFormatDateTime(scope.row.update_time) }}
+                    {{ getNowFormatDateTime(scope.row.create_time) }}
                 </template>
             </el-table-column>
-            <el-table-column label="操作" width="230">
+            <el-table-column label="操作" width="240">
                 <template #default="scope">
-                    <router-link :to="`/article/${scope.row.id}`" append>
-                        <el-button size="default">编辑</el-button>
+                    <router-link style="margin-right: 5px" :to="`/article/${scope.row.id}`" append>
+                        <el-button type="primary" size="default">编辑</el-button>
                     </router-link>
-                    <router-link :to="`/article/seo/${scope.row.id}`" append>
+                    <router-link style="margin-right: 5px" :to="`/article/seo/${scope.row.id}`" append>
                         <el-button size="default">编辑seo</el-button>
                     </router-link>
                     <el-button type="danger" size="default" @click="deleteHandler(scope.row.id)">删除</el-button>

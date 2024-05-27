@@ -108,8 +108,15 @@ const uploadEvent = (url) => {
 }
 const onUploadImg = async (files, callback) => {
     let obj = await getOssPolicy('article_img/' + getNowFormatDate() + '/')
+    let title = formData.title ? formData.title : ''
+    let newFiles = []
+    files.map((file) => {
+        let newFileName = title + formatDate() + ".png"
+        let newFile = new File([file], newFileName, file);
+        newFiles.push(newFile)
+    })
     const res = await Promise.all(
-        files.map((file) => {
+        newFiles.map((file) => {
             return new Promise((rev, rej) => {
                 const form = new FormData();
                 form.append('OSSAccessKeyId', obj.OSSAccessKeyId);
@@ -132,12 +139,26 @@ const onUploadImg = async (files, callback) => {
             });
         })
     );
-
     callback(res.map((item) => item.data));
+}
+
+const formatDate = () => {
+    // 创建一个新的Date对象，表示当前时间
+    const currentDate = new Date();
+
+    // 获取年、月、日、时、分、秒
+    const year = currentDate.getFullYear();
+    const month = ('0' + (currentDate.getMonth() + 1)).slice(-2); // 月份从0开始，所以要加1，并确保为两位数
+    const day = ('0' + currentDate.getDate()).slice(-2); // 获取日，并确保为两位数
+    const hours = ('0' + currentDate.getHours()).slice(-2); // 获取小时，并确保为两位数
+    const minutes = ('0' + currentDate.getMinutes()).slice(-2); // 获取分钟，并确保为两位数
+    const seconds = ('0' + currentDate.getSeconds()).slice(-2); // 获取秒钟，并确保为两位数
+
+    // 格式化时间字符串
+    return year + '-' + month + '-' + day + '_' + hours + '-' + minutes + '-' + seconds;
 }
 
 const back = () => {
     router.back();
 }
 </script>
-
