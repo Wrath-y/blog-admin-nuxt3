@@ -57,10 +57,9 @@ const login = async (formEl: FormInstance | undefined) => {
         if (valid) {
             isBtnLoading.value = true;
             btnText.value = '登陆中'
-            const {
-                data
-            } = await useHttpPost("/login", `/login`, { body: form });
+            const { data } = await useHttpPost("/login", `/login`, { body: form });
             if (data.value.code == 200) {
+                localStorage.setItem('wrath', JSON.stringify(form))
                 token.value = data.value.data.token;
                 setPageLayout('default')
                 router.push('article')

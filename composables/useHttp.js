@@ -58,8 +58,17 @@ export async function useHttp(key, url, options = {}) {
         // 客户端错误处理
         if (process.client && res?.data?.value?.code != 200) {
             if (res?.data?.value?.code == 40001) {
-                const router = useRouter()
-                router.push('/')
+                // 静默登陆
+                const accountInfo = JSON.parse(localStorage.getItem('wrath')) || {};
+                const { data } = await useHttpPost("/login", `/login`, { body: accountInfo });
+                if (data.value.code == 200) {
+                    const token = useCookie('token')
+                    token.value = data.value.data.token;
+                    useHttp(key, url, options)
+                } else {
+                    const router = useRouter()
+                    router.push('/')
+                }
             }
             if (!options.lazy) {
                 ElMessage.error(res?.data?.value?.msg)
